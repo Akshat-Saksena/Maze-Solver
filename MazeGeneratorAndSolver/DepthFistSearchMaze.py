@@ -162,10 +162,7 @@ def plotRoute(x,y):
         solution_cell(x, y)                                      # animate route back
         time.sleep(SPEED)
 
-def h(cell1,cell2):
-    x1, y1=cell1
-    x2, y2=cell2
-    return abs(x1-x2)+abs(y1-y2)
+
 
 start=()
 path={}
