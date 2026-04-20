@@ -170,60 +170,10 @@ def h(cell1,cell2):
 start=()
 path={}
 
-def A_Star(x,y):
-    start=(x,y)#end cell of the maze
-    end=(20,20)#starting cell of the maze 
-    gCost={}
-    fCost={}
-    for i in grid:
-        gCost[i]=float('inf')
-        fCost[i]=float('inf')
-    gCost[start]=0
-    fCost[start]=gCost[start]+h(start,end)
-
-    print(gCost)
-    print(fCost)
-
-    pQueue=PriorityQueue()
-
-    pQueue.put((fCost[start],h(start,end),start))
-
-    while not pQueue.empty():
-        currCell=pQueue.get()[2]
-        if currCell==end:
-            break
-        for i in ("left","right","up","down"):
-            neighbourCell=()
-            if Maze_map[currCell][i]==1:
-                if i=="left":
-                    neighbourCell=(currCell[0]-w,currCell[1])
-                if i=="right":
-                    neighbourCell=(currCell[0]+w,currCell[1])
-                if i=="up":
-                    neighbourCell=(currCell[0],currCell[1]-w)
-                if i=="down":
-                    neighbourCell=(currCell[0],currCell[1]+w)
-                
-                new_gCost=gCost[currCell]+w
-                new_fCost=new_gCost+h(neighbourCell,end)
-
-                if new_fCost<fCost[neighbourCell]:
-                    gCost[neighbourCell]=new_gCost
-                    fCost[neighbourCell]=new_fCost
-                    pQueue.put((new_fCost,h(neighbourCell,end),neighbourCell))
-                    path[neighbourCell]=currCell
-
 build_grid(X, Y, w)             # 1st argument = x value, 2nd argument = y value, 3rd argument = width of cell
 x, y = w, w                     # starting position of grid
 createMaze(x,y)                 # call build the maze  function
-#A_Star(w*X,w*Y)
 
-# cell=()
-# for i in path.keys():
-#     cell=path[i]
-#     solution[cell]=i
-
-# print(solution)
 
 plotRoute(w*X, w*Y)             # call the plot solution function
 
